@@ -1,0 +1,155 @@
+<div [formGroup]="pessoaForm">
+  <div id="rowPrimeiraParte" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+    <div id="columnImagem" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
+      <img src="assets/images/profile-picture-default.jpg" class="pessoa-imagem">
+    </div>
+    <div id="columnDadosPrincipais"fxFlex="grow" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+      <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="20px">
+
+        <!-- CIRME -->
+        <mat-form-field appearance="fill" fxFlex="34">
+          <mat-label>CIRME</mat-label>
+          <input matInput placeholder="CIRME" formControlName="id" value="" readonly>
+        </mat-form-field>
+
+        <!-- NOME -->
+        <mat-form-field appearance="fill" fxFlex="66">
+          <mat-label>Nome Completo</mat-label>
+          <input matInput placeholder="Nome Compelto" formControlName="nome_completo" value="" cdkFocusInitial>
+          <mat-error *ngIf="pessoaForm.controls.nome_completo.hasError('required')">
+            Nome do cargo é <strong>exigido</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="20px">
+        <!-- DATA DE NASCIMENTO -->
+        <mat-form-field appearance="fill" fxFlex="auto">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput placeholder="Data de Nascimento" formControlName="data_nascimento" value="" >
+          <mat-error *ngIf="pessoaForm.controls.data_nascimento.hasError('required')">
+            Nome do cargo é <strong>exigido</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- CPF -->
+        <mat-form-field appearance="fill" fxFlex="auto">
+          <mat-label>CPF</mat-label>
+          <input matInput placeholder="CPF" formControlName="cpf" value="" >
+          <mat-error *ngIf="pessoaForm.controls.cpf.hasError('required')">
+            Nome do cargo é <strong>exigido</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- SEXO -->
+        <mat-form-field appearance="fill" fxFlex="auto">
+          <mat-label>Sexo</mat-label>
+          <mat-select>
+            <mat-option value="masculino">Masculino</mat-option>
+            <mat-option value="feminino">Feminino</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <mat-accordion id="rowSegundaParte" displayMode="flat" fxLayout="column" fxLayoutAlign="start stretch">
+      <mat-expansion-panel id="dadosEnderecamento" expanded>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Dados de Endereçamento</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxFlex="grow" fxLayout="column" fxLayoutAlign="center stretch">
+          <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="10px">
+
+            <!-- CEP -->
+            <mat-form-field appearance="fill" fxFlex="20">
+              <mat-label>CEP</mat-label>
+              <input matInput placeholder="CEP" >
+            </mat-form-field>
+
+            <!-- ESTADO -->
+            <mat-form-field appearance="fill" fxFlex="20">
+              <mat-label>Estado</mat-label>
+              <input matInput placeholder="Estado" >
+            </mat-form-field>
+
+            <!-- MUNICIPIO -->
+            <mat-form-field appearance="fill" fxFlex="30">
+              <mat-label>Municipio</mat-label>
+              <input matInput placeholder="Municipio" >
+            </mat-form-field>
+
+            <!-- DISTRITO -->
+            <mat-form-field appearance="fill" fxFlex="30">
+              <mat-label>Distrito</mat-label>
+              <input matInput placeholder="Distrito" >
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="10px">
+
+            <!-- LOGRADOURO -->
+            <mat-form-field appearance="fill" fxFlex="39">
+              <mat-label>Logradouro</mat-label>
+              <input matInput placeholder="Logradouro">
+            </mat-form-field>
+
+            <!-- NUMERO -->
+            <mat-form-field appearance="fill" fxFlex="15">
+              <mat-label>Número</mat-label>
+              <input matInput placeholder="Número">
+            </mat-form-field>
+
+            <!-- BAIRRO -->
+            <mat-form-field appearance="fill" fxFlex="23">
+              <mat-label>Bairro</mat-label>
+              <input matInput placeholder="Bairro" >
+            </mat-form-field>
+
+            <!-- COMPLEMENTO -->
+            <mat-form-field appearance="fill" fxFlex="23">
+              <mat-label>Complemento</mat-label>
+              <input matInput placeholder="Complemento">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel id="dadosContato">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Dados de Contato</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <mat-list dense>
+            <mat-list-item>
+               <mat-icon matListIcon>phone</mat-icon>
+               <h4 matLine>Nome da Pasta</h4>
+               <p matLine class="demo-2">Data da atualização</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+              <mat-icon matListIcon>email</mat-icon>
+              <h4 matLine>Nome da Pasta</h4>
+              <p matLine class="demo-2">Data da atualização</p>
+           </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+              <mat-icon matListIcon>stay_primary_portrait</mat-icon>
+              <h4 matLine>Nome da Pasta</h4>
+              <p matLine class="demo-2">Data da atualização</p>
+           </mat-list-item>
+          </mat-list>
+        </div>
+        <mat-action-row fxLayout="row" fxLayoutAlign="start center">
+          <button mat-stroked-button color="primary">Adicionar contato</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<div>
+  <button mat-stroked-button>Cancelar</button>
+  <button mat-flat-button color="primary" [disabled]="!pessoaForm.valid">Salvar registro</button>
+</div>

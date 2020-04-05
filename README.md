@@ -1,7 +1,7 @@
 # **PGI-APP**
 Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna - Plataforma de Gestão Interna  
 
-**Versão Estável:** 0.0.1  
+**Versão Estável:** 0.1.0  
 **Licensa:** Proprietário - Usu Privado  
 Todos os direitos reservados - É estritamente proibida a cópia não autorizada de qualquer arquivo deste projeto, por qualquer meio..  
 
@@ -40,5 +40,8 @@ This project uses automated deployment using the git and [Buddy Works](https://a
 - **Usuário:** DeployUser  
 
 ## **Changelog**  
+= **0.1.0 - 12/04/2020** =  
+Scaffolding do Projeto
+
 = **0.0.1 - 04/04/2020** =  
 Scaffolding do Projeto  

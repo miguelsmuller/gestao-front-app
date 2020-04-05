@@ -1,0 +1,29 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
+  <h2>Cargos</h2>
+  <button mat-flat-button (click)="fecharDialogo()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content [formGroup]="cargoForm">
+    <div fxLayout="column" fxLayoutAlign="start stretch" >
+      <input type="hidden" formControlName="id" value="internalCargo.id">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nome do cargo</mat-label>
+        <input matInput placeholder="Nome do cargo" formControlName="nome" value="internalCargo.nome" cdkFocusInitial>
+        <mat-error *ngIf="cargoForm.controls.nome.hasError('required')">
+          Nome do cargo é <strong>exigido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-slide-toggle formControlName='inativo' [checked]="internalCargo.inativo ? true : false">Inativar esse cadastro</mat-slide-toggle>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-flat-button (click)="fecharDialogo()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="salvarDialogo()" [class.button-in-loading]="formInSaving" [disabled]="!cargoForm.valid || formInSaving">
+    Salvar registro
+  </button>
+</mat-dialog-actions>

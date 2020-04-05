@@ -1,0 +1,15 @@
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+
+  &.dot-success{
+    background-color: mat-color($sucess, 500);
+  }
+
+  &.dot-danget{
+    background-color: mat-color($danger, 500);
+  }
+}

@@ -1,0 +1,50 @@
+@import '~@angular/material/theming';
+
+$typo: mat-typography-config(
+  $headline: mat-typography-level(26px, 30px, 500),
+  $subheading-1: mat-typography-level(14px, 12px, 300)
+);
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink);
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .pessoa-header{
+    margin-top: 12px;
+    background-color: mat-color($primary, 800);
+    padding: 25px 20px 20px 20px;
+    border-radius: 10px 10px 0px 0px;
+    width: 650px;
+
+    .pessoa-imagem > img{
+      max-width: 100%;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border: 4px solid mat-color($primary, 50);
+      background-color: mat-color($primary, 50);
+      margin-bottom: -60px;
+    }
+
+    .pessoa-info{
+      .pessoa-nome{
+        @include mat-typography-level-to-styles($typo, 'headline');
+        color: mat-color($primary, default-contrast);
+        margin-bottom: 5px;
+        display: block;
+      }
+      .pessoa-id{
+        @include mat-typography-level-to-styles($typo, 'subheading-1');
+        color: mat-color($primary, default-contrast);
+        opacity: .5;
+        display: block;
+      }
+    }
+  }
+
+  .pessoa-content{
+    padding: 35px 0px 0px;
+  }
+}

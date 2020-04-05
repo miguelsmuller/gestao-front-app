@@ -1,0 +1,32 @@
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink);
+
+:host {
+  .dashboard-header{
+    background-color: mat-color($primary, 700);
+    color: mat-color($primary, default-contrast);
+    padding: 60px 50px 40px;
+
+    .dashboard-header-item{
+      max-width: 230px;
+      border-left: 4px solid #fff3;
+      padding: 10px;
+
+      h1{
+        font-size: 32px;
+        line-height: 30px;
+        font-weight: 600;
+        margin: 0px;
+      }
+      span{
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 400;
+        color: mat-color($primary, default-contrast);
+        opacity: .5;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@keyframes button-in-loading {
+  to {transform: rotate(360deg);}
+}
+.button-in-loading:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: button-in-loading .8s linear infinite;
+}

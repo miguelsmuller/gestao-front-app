@@ -1,0 +1,40 @@
+<div class="full-page" fxLayout="row" fxLayoutAlign="space-between stretch" fxFill>
+  <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center" class="left-side">
+    <img src="assets/images/clip-sign-up.png">
+    <h1>Lorem ipsum dolor sit amet consectetur</h1>
+    <p class="mat-subheading-2">Vestibulum rhoncus ut metus sit amet volutpat. Vestibulum quis arcu purus. Nunc id lacus quis massa volutpat consectetur in ac ligula. Sed auctor efficitur justo a pellentesque. Suspendisse nec interdum mi.</p>
+  </div>
+
+  <div fxFlex="70" fxLayout="column" fxLayoutAlign="center center" class="right-side">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+      <mat-card>
+          <mat-card-header>
+            <mat-card-title>Seja bem vindo</mat-card-title>
+            <mat-card-subtitle>Faça login para entrar no sistema</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content fxLayout="column" >
+            <mat-form-field appearance="fill">
+              <mat-label>Usuário</mat-label>
+              <input matInput formControlName="username" type="text"
+                placeholder="Usuário" autocomplete="username" autofocus cdkFocusInitial>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Senha</mat-label>
+              <input matInput formControlName="password" type="password"
+                placeholder="Senha" autocomplete="password">
+            </mat-form-field>
+          </mat-card-content>
+
+          <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center" >
+            <button mat-flat-button color="primary" type="submit" [class.button-in-loading]="loading" [disabled]="loading">
+              <mat-icon>check</mat-icon>
+              Login
+            </button>
+            <a mat-button [disabled]="loading" routerLink="/recuperar-senha" >Esqueceu a senha?</a>
+          </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

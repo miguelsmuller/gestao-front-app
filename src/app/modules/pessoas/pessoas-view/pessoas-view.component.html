@@ -1,0 +1,39 @@
+<mat-dialog-content>
+  <div fxLayout="row" fxLayoutAlign="start end" class="pessoa-header">
+    <div fxFlex="150px" class="pessoa-imagem">
+      <img src="assets/images/profile-picture-default.jpg" >
+    </div>
+    <div fxFlex="auto" fxFlexOffset="20px" fxLayout="column" fxLayoutAlign="end start" class="pessoa-info">
+      <h1 class="pessoa-nome">{{pessoa.nome_completo}}</h1>
+      <span class="pessoa-id">{{pessoa.id}}</span>
+    </div>
+  </div>
+  <div fxLayout="row" class="pessoa-content">
+    <mat-list fxFlex="50">
+      <mat-list-item>
+        <h3 matLine>D. Nascimento:</h3>
+        <p matLine>{{pessoa.data_nascimento | date:'dd/MM/yyyy'}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine>CPF:</h3>
+        <p matLine>{{pessoa.cpf | cpf}}</p>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list fxFlex="50">
+      <mat-list-item>
+        <h3 matLine>Telefone:</h3>
+        <p matLine>{{pessoa.telefone}}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine>E-Mail:</h3>
+        <p matLine>{{pessoa.email}}</p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+  <button mat-stroked-button (click)="fecharDialogo()">Cancelar</button>
+  <button mat-flat-button color="primary" routerLink="/pessoas/{{pessoa.id}}" cdkFocusInitial>Ver informações detalhadas</button>
+</mat-dialog-actions>
