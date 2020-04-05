@@ -1,0 +1,41 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.outlet-toolbar{
+  height: 50px !important;
+  padding: 0 5px !important;
+}
+
+.outlet-container{
+  margin: 20px;
+}
+
+.table-container {
+  position: relative;
+
+  .table-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .table-wraper{
+    position: relative;
+    overflow: auto;
+  }
+
+  table {
+    width: 100%;
+
+    tr.mat-row, tr.mat-footer-row {
+      height: 42px !important;
+    }
+  }
+}

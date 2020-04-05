@@ -1,0 +1,13 @@
+<h3>Unidades Escolares</h3>
+
+<div *ngIf="(unidadesEscolares$ | async)?.lenght>0; else vazio">
+  <ul>
+    <li *ngFor="let unidadeEscolar of (unidadesEscolares$ | async)">
+      {{unidadeEscolar.nome_completo}}
+    </li>
+  </ul>
+</div>
+
+<ng-template #vazio>
+  <p>Nenhuma unidade escolar encontrada</p>
+</ng-template>
