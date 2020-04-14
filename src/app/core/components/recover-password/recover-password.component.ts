@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '@env/environment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-recover-password',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecoverPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pageTitle: Title) {
+    this.pageTitle.setTitle(environment.app_name + ' - Recuperação de senha');
+  }
 
   ngOnInit(): void {
   }

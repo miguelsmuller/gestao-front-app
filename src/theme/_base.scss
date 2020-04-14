@@ -12,3 +12,17 @@ body {
 body {
   margin: 0;
 }
+
+.internal-page-toolbar{
+  height: 50px !important;
+  padding: 0 5px !important;
+
+  mat-form-field.mat-form-field{
+    width: 370px;
+    font-size: 14px;
+  }
+}
+
+.internal-page-container{
+  margin: 20px;
+}

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
+import { Title } from '@angular/platform-browser';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-login',
@@ -23,37 +25,38 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private authService: AuthService
-  ) { }
-
-  ngOnInit(): void {
+    private authService: AuthService,
+    private pageTitle: Title,
+  ) {
+    this.pageTitle.setTitle(environment.app_name + ' - Login');
   }
+
+  ngOnInit(): void { }
 
   onSubmit() {
-    this.loading = true;
+    if (this.loginForm.valid) {
+      this.loading = true;
 
-    const credentials = this.loginForm.value;
-
-    this.authService.login(credentials)
-    .subscribe(
-      (response) => {
-        this.loading = false;
-
-        this.snackBar.open(
-          'Usuário autenticado com sucesso. Seja bem vindo.', 'OK',
-          {duration: 3000}
-        );
-        this.router.navigateByUrl('/');
-      },
-      (erro) => {
-        this.loading = false;
-
-        this.snackBar.open(
-          'Verifique suas credenciais e tente novamente.', 'OK',
-          {duration: 3000}
-        );
-      }
-    );
+      this.authService.login( this.loginForm.value )
+      .subscribe(
+        (success) => {
+          this.loading = false;
+          this.snackBar.open( 'Usuário autenticado com sucesso. Seja bem vindo.', 'OK',
+            {duration: 3000}
+          );
+          this.router.navigateByUrl('/');
+        },
+        (erro) => {
+          this.loading = false;
+          this.snackBar.open( 'Verifique suas credenciais e tente novamente.', 'OK',
+            {duration: 3000}
+          );
+        }
+      );
+    } else {
+      this.snackBar.open( 'Preencha o formulário de login corretamente e tente novamente.', 'OK',
+        {duration: 3000}
+      );
+    }
   }
-
 }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 import { SharedModule } from '@project/shared/shared.module';
 
 import { PessoasRoutingModule } from './pessoas-routing.module';
@@ -12,7 +14,8 @@ import { PessoasViewComponent } from './pessoas-view/pessoas-view.component';
   imports: [
     CommonModule,
     SharedModule,
-    PessoasRoutingModule
+    PessoasRoutingModule,
+    NgxMaskModule.forRoot()
   ],
   declarations: [
     PessoasListComponent,

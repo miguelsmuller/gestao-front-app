@@ -13,17 +13,3 @@ $danger: mat-palette($mat-red);
 @import "./theme/table";
 @import "./theme/expansion";
 @import "./theme/custom-elements";
-
-.outlet-toolbar{
-  height: 50px !important;
-  padding: 0 5px !important;
-
-  mat-form-field.mat-form-field{
-    width: 370px;
-    font-size: 14px;
-  }
-}
-
-.outlet-container{
-  margin: 20px;
-}

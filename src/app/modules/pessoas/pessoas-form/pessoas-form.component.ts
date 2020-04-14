@@ -11,18 +11,23 @@ import { Pessoa } from '@project/shared/interfaces/pessoa';
 })
 export class PessoasFormComponent implements OnInit {
   internalPessoa: Pessoa;
+  idFromRoute = '';
 
   pessoaForm = this.fb.group({
-    id: [{value: null}],
+    id: ['', []],
     nome_completo: ['', [
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(255)]],
+      Validators.maxLength(255)]
+    ],
     data_nascimento: ['', [
-        Validators.required]],
-    cpf: [''],
+        Validators.required]
+    ],
+    cpf: ['', []],
     sexo: ['masculino', [
-      Validators.required]]
+      Validators.required]],
+    telefone: ['', []],
+    email: ['', []],
   });
 
   constructor(
@@ -31,7 +36,7 @@ export class PessoasFormComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    const  id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
+    this.idFromRoute = this.route.snapshot.paramMap.get('id');
+    this.pessoaForm.controls.id.setValue(this.route.snapshot.paramMap.get('id'));
   }
 }

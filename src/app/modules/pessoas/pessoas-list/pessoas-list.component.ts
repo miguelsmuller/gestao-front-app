@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, HostListener, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { merge, of, Observable, fromEvent, Subject } from 'rxjs';
+import { catchError, map, startWith, switchMap, takeUntil } from 'rxjs/operators';
+
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { merge, of as observableOf } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 import { Pessoa } from '@project/shared/interfaces/pessoa';
 import { PessoaService } from '@project/shared/services/pessoa.service';
@@ -16,31 +17,48 @@ import { PessoasViewComponent } from './../pessoas-view/pessoas-view.component';
   styleUrls: ['./pessoas-list.component.scss']
 })
 export class PessoasListComponent implements AfterViewInit {
-
   @ViewChild(MatPaginator) tablePaginador: MatPaginator;
   @ViewChild(MatSort) tableOrdernador: MatSort;
 
   screenInLoading = true;
 
-  dataSource: Pessoa[] = [];
+  unSubscribeAllObservables$: Subject<any> = new Subject();
+
+  dataSource$: Observable<Pessoa[]>;
   dataSourceColumns: string[] = ['nome_completo', 'data_nascimento', 'cpf'];
   dataSourcePerPage = 0;
   dataSourceTotal = 0;
 
   constructor(
     private dialog: MatDialog,
-    private pessoaService: PessoaService ) { }
+    private pessoaService: PessoaService
+  ) { }
 
   ngAfterViewInit() {
-    this.tableOrdernador.sortChange.subscribe(() => this.tablePaginador.pageIndex = 0);
-
     this.tableUpdate();
+
+    const tableSortChange$ = this.tableOrdernador.sortChange
+    .pipe( takeUntil(this.unSubscribeAllObservables$) )
+    .subscribe(() => this.tablePaginador.pageIndex = 0);
+
+    const tablePaginatorChange$ = fromEvent(document, 'keyup')
+    .pipe( takeUntil(this.unSubscribeAllObservables$) )
+    .subscribe( (event: KeyboardEvent) => {
+      if (event.code === 'ArrowLeft') { this.tablePrevious(); }
+      if (event.code === 'ArrowRight') { this.tableNext(); }
+    });
+  }
+
+  ngOnDestry() {
+    this.unSubscribeAllObservables$.next();
   }
 
   tableUpdate() {
-    merge(this.tableOrdernador.sortChange, this.tablePaginador.page)
+    this.dataSource$ = merge(this.tableOrdernador.sortChange, this.tablePaginador.page)
     .pipe(
-      startWith({}),
+      startWith({
+        // Start with empty object
+      }),
       switchMap(() => {
         this.screenInLoading = true;
 
@@ -61,30 +79,9 @@ export class PessoasListComponent implements AfterViewInit {
       catchError(() => {
         this.screenInLoading = false;
 
-        return observableOf([]);
+        return of([]);
       })
-    )
-    .subscribe(response => this.dataSource = response);
-  }
-
-  openDialog(pessoa: Pessoa) {
-    const formularioConfiguracao = new MatDialogConfig();
-    formularioConfiguracao.panelClass = 'mat-dialog';
-    formularioConfiguracao.disableClose = false;
-    formularioConfiguracao.autoFocus = true;
-    formularioConfiguracao.data = pessoa;
-
-    const formularioCriarCargo = this.dialog.open(PessoasViewComponent, formularioConfiguracao);
-
-    formularioCriarCargo.afterClosed().subscribe( (formularioResposta: Pessoa) => {
-      this.saveCargo(formularioResposta);
-    });
-  }
-
-  saveCargo(cargo: Pessoa) {
-    if (cargo) {
-      console.log(cargo);
-    }
+    );
   }
 
   tableNext() {
@@ -99,10 +96,23 @@ export class PessoasListComponent implements AfterViewInit {
     }
   }
 
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    if (event.code === 'ArrowLeft') { this.tablePrevious(); }
-    if (event.code === 'ArrowRight') { this.tableNext(); }
+  openDialog(pessoa: Pessoa) {
+    const formularioConfiguracao = new MatDialogConfig();
+    formularioConfiguracao.panelClass = 'mat-dialog';
+    formularioConfiguracao.disableClose = false;
+    formularioConfiguracao.autoFocus = true;
+    formularioConfiguracao.data = pessoa;
+
+    const formularioCriarCargo = this.dialog.open(PessoasViewComponent, formularioConfiguracao);
+
+    formularioCriarCargo.afterClosed().subscribe( (formularioResposta: Pessoa) => {
+      this.savePeople(formularioResposta);
+    });
   }
 
+  savePeople(pessoa: Pessoa) {
+    if (pessoa) {
+      console.log(pessoa);
+    }
+  }
 }

@@ -41,7 +41,7 @@ This project uses automated deployment using the git and [Buddy Works](https://a
 
 ## **Changelog**  
 = **0.1.0 - 12/04/2020** =  
-Scaffolding do Projeto
+Atualizacao das dependencias, modulos e estrutura
 
 = **0.0.1 - 04/04/2020** =  
 Scaffolding do Projeto  

@@ -1,4 +1,4 @@
-<mat-toolbar class="outlet-toolbar" disable>
+<mat-toolbar class="internal-page-toolbar" disable>
   <button mat-button (click)="openDialog(null)">
     <mat-icon>control_point</mat-icon> Novo
   </button>
@@ -6,11 +6,11 @@
     <mat-icon>cached</mat-icon> Atualizar
   </button>
   <mat-form-field appearance="standard">
-    <input matInput #searchKeyword placeholder="Critério de busca">
+    <input matInput #tableSearchKeyword placeholder="Critério de busca">
   </mat-form-field>
 </mat-toolbar>
 
-<div class="outlet-container">
+<div class="internal-page-container">
   <mat-card>
     <mat-card-title>Cargos</mat-card-title>
 
@@ -19,7 +19,7 @@
         <mat-progress-bar *ngIf="screenInLoading" mode="indeterminate"></mat-progress-bar>
 
         <div class="table-wraper">
-          <table mat-table [dataSource]="dataSource" matSort matSortDisableClear>
+          <table mat-table [dataSource]="dataSource$ | async" matSort matSortDisableClear>
             <ng-container matColumnDef="nome">
               <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Nome </th>
               <td mat-cell *matCellDef="let element"> {{element.nome}} </td>

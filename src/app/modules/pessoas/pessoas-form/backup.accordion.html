@@ -1,0 +1,94 @@
+<mat-accordion id="rowSegundaParte" displayMode="flat" fxLayout="column" fxLayoutAlign="start stretch">
+  <mat-expansion-panel id="dadosEnderecamento" expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Dados de Endereçamento</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxFlex="grow" fxLayout="column" fxLayoutAlign="center stretch">
+      <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="10px">
+
+        <!-- CEP -->
+        <mat-form-field appearance="fill" fxFlex="20">
+          <mat-label>CEP</mat-label>
+          <input matInput placeholder="CEP" >
+        </mat-form-field>
+
+        <!-- ESTADO -->
+        <mat-form-field appearance="fill" fxFlex="20">
+          <mat-label>Estado</mat-label>
+          <input matInput placeholder="Estado" >
+        </mat-form-field>
+
+        <!-- MUNICIPIO -->
+        <mat-form-field appearance="fill" fxFlex="30">
+          <mat-label>Municipio</mat-label>
+          <input matInput placeholder="Municipio" >
+        </mat-form-field>
+
+        <!-- DISTRITO -->
+        <mat-form-field appearance="fill" fxFlex="30">
+          <mat-label>Distrito</mat-label>
+          <input matInput placeholder="Distrito" >
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="10px">
+
+        <!-- LOGRADOURO -->
+        <mat-form-field appearance="fill" fxFlex="39">
+          <mat-label>Logradouro</mat-label>
+          <input matInput placeholder="Logradouro">
+        </mat-form-field>
+
+        <!-- NUMERO -->
+        <mat-form-field appearance="fill" fxFlex="15">
+          <mat-label>Número</mat-label>
+          <input matInput placeholder="Número">
+        </mat-form-field>
+
+        <!-- BAIRRO -->
+        <mat-form-field appearance="fill" fxFlex="23">
+          <mat-label>Bairro</mat-label>
+          <input matInput placeholder="Bairro" >
+        </mat-form-field>
+
+        <!-- COMPLEMENTO -->
+        <mat-form-field appearance="fill" fxFlex="23">
+          <mat-label>Complemento</mat-label>
+          <input matInput placeholder="Complemento">
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel id="dadosContato">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Dados de Contato</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <mat-list dense>
+        <mat-list-item>
+           <mat-icon matListIcon>phone</mat-icon>
+           <h4 matLine>Nome da Pasta</h4>
+           <p matLine class="demo-2">Data da atualização</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <mat-icon matListIcon>email</mat-icon>
+          <h4 matLine>Nome da Pasta</h4>
+          <p matLine class="demo-2">Data da atualização</p>
+       </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <mat-icon matListIcon>stay_primary_portrait</mat-icon>
+          <h4 matLine>Nome da Pasta</h4>
+          <p matLine class="demo-2">Data da atualização</p>
+       </mat-list-item>
+      </mat-list>
+    </div>
+    <mat-action-row fxLayout="row" fxLayoutAlign="start center">
+      <button mat-stroked-button color="primary">Adicionar contato</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
