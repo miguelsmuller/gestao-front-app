@@ -6,16 +6,17 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { Cargo, DataCargo } from '@project/shared/interfaces/cargo';
-import { CargoService } from '@project/shared/services/cargo.service';
-import { CargosFormComponent } from '../cargos-form/cargos-form.component';
+import { DataUnidadeEscolar, UnidadeEscolar } from '@project/shared/interfaces/unidadeEscolar';
+import { UnidadeEscolarService } from '@project/shared/services/unidade-escolar.service';
+import { UnidadesFormComponent } from './../unidades-form/unidades-form.component';
 
 @Component({
-  selector: 'app-cargos-list',
-  templateUrl: './cargos-list.component.html',
-  styleUrls: ['./cargos-list.component.scss']
+  selector: 'app-unidades-list',
+  templateUrl: './unidades-list.component.html',
+  styleUrls: ['./unidades-list.component.scss']
 })
-export class CargosListComponent implements AfterViewInit {
+export class UnidadesListComponent implements AfterViewInit {
+
   @ViewChild(MatPaginator) tablePaginador: MatPaginator;
   @ViewChild(MatSort) tableOrdernador: MatSort;
   @ViewChild('tableSearchKeyword') tableSearchKeyword: ElementRef;
@@ -24,14 +25,14 @@ export class CargosListComponent implements AfterViewInit {
 
   unSubscribeAllObservables$: Subject<any> = new Subject();
 
-  dataSource$: Observable<Cargo[]>;
-  dataSourceColumns: string[] = ['nome', 'inativo', 'created_at'];
+  dataSource$: Observable<UnidadeEscolar[]>;
+  dataSourceColumns: string[] = ['nome_completo', 'inep', 'localizacao', 'inativo'];
   dataSourcePerPage = 0;
   dataSourceTotal = 0;
 
   constructor(
     private dialog: MatDialog,
-    private cargoService: CargoService
+    private unidadeService: UnidadeEscolarService
   ) { }
 
   ngAfterViewInit() {
@@ -62,13 +63,13 @@ export class CargosListComponent implements AfterViewInit {
       switchMap(() => {
         this.screenInLoading = true;
 
-        return this.cargoService.getCargos(
+        return this.unidadeService.getUnidades(
           this.tableSearchKeyword.nativeElement.value,
           this.tableOrdernador.direction,
           this.tableOrdernador.active,
           this.tablePaginador.pageIndex);
       }),
-      map((response: DataCargo) => {
+      map((response: DataUnidadeEscolar) => {
         this.screenInLoading = false;
         this.dataSourcePerPage = response.meta.per_page;
         this.dataSourceTotal = response.meta.total;
@@ -95,17 +96,18 @@ export class CargosListComponent implements AfterViewInit {
     }
   }
 
-  openDialog(cargo: Cargo) {
+  openDialog(unidade: UnidadeEscolar) {
     const formConfig = new MatDialogConfig();
     formConfig.panelClass = 'mat-dialog';
     formConfig.disableClose = false;
     formConfig.autoFocus = true;
-    formConfig.data = cargo;
+    formConfig.data = unidade;
 
-    const formularioCriarCargo = this.dialog.open(CargosFormComponent, formConfig);
+    const formularioCriarCargo = this.dialog.open(UnidadesFormComponent, formConfig);
 
     formularioCriarCargo.afterClosed().subscribe( (result: boolean) => {
       if (result === true) { this.tableUpdate(); }
     });
   }
+
 }

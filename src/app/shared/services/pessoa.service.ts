@@ -13,7 +13,8 @@ export class PessoaService {
   readonly BASE_URL = environment.api_url;
 
   constructor(
-    private http: HttpClient ) { }
+    private http: HttpClient
+  ) { }
 
   getPessoas(keyword = null, sort = null, order = null, page = null): Observable<DataPessoa> {
     let requestUrl = `${this.BASE_URL}/pessoas?`;

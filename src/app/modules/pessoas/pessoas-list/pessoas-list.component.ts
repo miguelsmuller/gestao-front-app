@@ -97,13 +97,13 @@ export class PessoasListComponent implements AfterViewInit {
   }
 
   openDialog(pessoa: Pessoa) {
-    const formularioConfiguracao = new MatDialogConfig();
-    formularioConfiguracao.panelClass = 'mat-dialog';
-    formularioConfiguracao.disableClose = false;
-    formularioConfiguracao.autoFocus = true;
-    formularioConfiguracao.data = pessoa;
+    const formConfig = new MatDialogConfig();
+    formConfig.panelClass = 'mat-dialog';
+    formConfig.disableClose = false;
+    formConfig.autoFocus = true;
+    formConfig.data = pessoa;
 
-    const formularioCriarCargo = this.dialog.open(PessoasViewComponent, formularioConfiguracao);
+    const formularioCriarCargo = this.dialog.open(PessoasViewComponent, formConfig);
 
     formularioCriarCargo.afterClosed().subscribe( (formularioResposta: Pessoa) => {
       this.savePeople(formularioResposta);

@@ -31,7 +31,10 @@ const routes: Routes = [
         path: 'pessoas',
         loadChildren: () => import('./modules/pessoas/pessoas.module').then(m => m.PessoasModule),
         canActivate: [AuthGuardService]
-      }
+      }, {
+        path: 'unidades-escolares',
+        loadChildren: () => import('./modules/unidades-escolares/unidades-escolares.module').then(m => m.UnidadesEscolaresModule)
+      },
     ]
   },
   {

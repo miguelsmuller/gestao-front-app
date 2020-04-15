@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    CoreModule.forRoot()
+    CoreModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
