@@ -4,8 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { UnidadeEscolar } from '@project/shared/interfaces/unidadeEscolar';
-import { UnidadeEscolarService } from '@project/shared/services/unidade-escolar.service';
+import { UnidadeEscolar } from '@app/shared/interfaces/unidadeEscolar';
+import { UnidadeEscolarService } from '@app/shared/services/unidade-escolar.service';
 
 @Component({
   selector: 'app-unidades-form',

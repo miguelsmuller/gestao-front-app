@@ -6,9 +6,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { Cargo, DataCargo } from '@project/shared/interfaces/cargo';
-import { CargoService } from '@project/shared/services/cargo.service';
-import { CargosFormComponent } from '../cargos-form/cargos-form.component';
+import { Cargo, DataCargo } from '@app/shared/interfaces/cargo';
+import { CargoService } from '@app/shared/services/cargo.service';
+import { CargosFormComponent } from '@app/modules/cargos/cargos-form/cargos-form.component';
 
 @Component({
   selector: 'app-cargos-list',

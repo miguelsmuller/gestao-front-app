@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { DataUnidadeEscolar, UnidadeEscolar } from '@project/shared/interfaces/unidadeEscolar';
+import { DataUnidadeEscolar, UnidadeEscolar } from '@app/shared/interfaces/unidadeEscolar';
 import { environment } from '@env/environment';
 
 @Injectable({

@@ -6,9 +6,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { DataUnidadeEscolar, UnidadeEscolar } from '@project/shared/interfaces/unidadeEscolar';
-import { UnidadeEscolarService } from '@project/shared/services/unidade-escolar.service';
-import { UnidadesFormComponent } from './../unidades-form/unidades-form.component';
+import { DataUnidadeEscolar, UnidadeEscolar } from '@app/shared/interfaces/unidadeEscolar';
+import { UnidadeEscolarService } from '@app/shared/services/unidade-escolar.service';
+import { UnidadesFormComponent } from '@app/modules/unidades-escolares/unidades-form/unidades-form.component';
 
 @Component({
   selector: 'app-unidades-list',

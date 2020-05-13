@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Usuario } from '../../shared/interfaces/usuario';
+import { Usuario } from '@app/shared/interfaces/usuario';
 
 @Injectable({
   providedIn: 'root'

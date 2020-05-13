@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { Pessoa } from '@project/shared/interfaces/pessoa';
+import { Pessoa } from '@app/shared/interfaces/pessoa';
 
 @Component({
   selector: 'app-pessoas-view',

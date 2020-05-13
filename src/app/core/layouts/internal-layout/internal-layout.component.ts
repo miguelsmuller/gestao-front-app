@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@project/core/services/auth.service';
+import { AuthService } from '@app/core/services/auth.service';
 
 @Component({
   selector: 'app-internal-layout',

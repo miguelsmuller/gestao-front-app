@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NgxMaskModule } from 'ngx-mask';
 
-import { SharedModule } from '@project/shared/shared.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 import { PessoasRoutingModule } from './pessoas-routing.module';
 import { PessoasListComponent } from './pessoas-list/pessoas-list.component';

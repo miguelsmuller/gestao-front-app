@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { SharedModule } from '@project/shared/shared.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 import { LoginComponent } from './components/login/login.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';

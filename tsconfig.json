@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@project/*": ["./src/app/*"],
+      "@app/*": ["./src/app/*"],
       "@env/*": ["./src/environments/*"]
     },
     "outDir": "./dist/out-tsc",
