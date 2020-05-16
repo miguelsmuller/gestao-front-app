@@ -1,6 +1,5 @@
 export interface Usuario {
-  id: number;
-  cirme: string;
+  id?: number;
   name: string;
   email: string;
   updated_at: string;

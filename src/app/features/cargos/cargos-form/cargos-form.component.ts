@@ -5,7 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CargoService } from '@app/shared/services/cargo.service';
-import { Cargo } from '@app/shared/interfaces/cargo';
+import { Cargo } from '@app/shared/models/cargo';
 
 
 @Component({

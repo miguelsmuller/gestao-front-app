@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { DataPessoa, Pessoa } from '@app/shared/interfaces/pessoa';
+import { DataPessoa, Pessoa } from '@app/shared/models/pessoa';
 import { environment } from '@env/environment';
 
 @Injectable({

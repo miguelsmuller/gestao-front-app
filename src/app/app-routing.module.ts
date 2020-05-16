@@ -21,19 +21,19 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+        loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule),
         canActivate: [AuthGuardService]
       }, {
         path: 'cargos',
-        loadChildren: () => import('./modules/cargos/cargos.module').then(m => m.CargosModule),
+        loadChildren: () => import('./features/cargos/cargos.module').then(m => m.CargosModule),
         canActivate: [AuthGuardService]
       }, {
         path: 'pessoas',
-        loadChildren: () => import('./modules/pessoas/pessoas.module').then(m => m.PessoasModule),
+        loadChildren: () => import('./features/pessoas/pessoas.module').then(m => m.PessoasModule),
         canActivate: [AuthGuardService]
       }, {
         path: 'unidades-escolares',
-        loadChildren: () => import('./modules/unidades-escolares/unidades-escolares.module').then(m => m.UnidadesEscolaresModule)
+        loadChildren: () => import('./features/unidades-escolares/unidades-escolares.module').then(m => m.UnidadesEscolaresModule)
       },
     ]
   },

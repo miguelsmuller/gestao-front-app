@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Pessoa } from '@app/shared/interfaces/pessoa';
+import { Pessoa } from '@app/shared/models/pessoa';
 
 @Component({
   selector: 'app-pessoas-form',

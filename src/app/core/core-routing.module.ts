@@ -14,7 +14,6 @@ const routes: Routes = [
       { path: 'recuperar-senha', component: RecoverPasswordComponent }
     ]
   }
-
 ];
 
 @NgModule({

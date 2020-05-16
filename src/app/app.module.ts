@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 
+import { AppStoreModule } from './store/store.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
@@ -19,6 +20,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AppStoreModule,
     CoreModule.forRoot(),
     SharedModule,
   ],

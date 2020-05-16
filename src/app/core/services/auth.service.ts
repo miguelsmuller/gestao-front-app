@@ -3,28 +3,40 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Usuario } from '@app/shared/interfaces/usuario';
+import { environment } from '@env/environment';
+import { Usuario } from '@app/shared/models/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  readonly url = 'http://127.0.0.1:8888/api';
+  readonly url = environment.api_url;
 
   private subjLogado$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private subjUsuario$: BehaviorSubject<Usuario> = new BehaviorSubject(null);
 
   constructor(
     private http: HttpClient,
-  ) { }
+  ) {}
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  setToken(val: string) {
+    if (val) {
+      localStorage.setItem('token', val);
+    } else {
+      localStorage.removeItem('token');
+    }
+  }
 
   login(crendetials: {username: string, password: string}): Observable<any> {
     return this.http.post<any>(`${this.url}/login`, crendetials)
     .pipe(
       tap(
         (response) => {
-          localStorage.setItem('token', response.access_token);
+          this.setToken(response.access_token);
           this.subjLogado$.next(true);
         }
       ),
@@ -36,13 +48,13 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    this.setToken(null);
     this.subjLogado$.next(false);
     this.subjUsuario$.next(null);
   }
 
   isAuthenticated(): Observable<boolean> {
-    const token = localStorage.getItem('token');
+    const token = this.getToken();
     if (token && !this.subjLogado$.value) {
       return this.checkTokenValidation();
     }

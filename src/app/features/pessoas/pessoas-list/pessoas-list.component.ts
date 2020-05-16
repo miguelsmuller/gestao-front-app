@@ -6,10 +6,10 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-import { Pessoa } from '@app/shared/interfaces/pessoa';
+import { Pessoa } from '@app/shared/models/pessoa';
 import { PessoaService } from '@app/shared/services/pessoa.service';
 
-import { PessoasViewComponent } from '@app/modules/pessoas/pessoas-view/pessoas-view.component';
+import { PessoasViewComponent } from '@app/features/pessoas/pessoas-view/pessoas-view.component';
 
 @Component({
   selector: 'app-pessoas-list',

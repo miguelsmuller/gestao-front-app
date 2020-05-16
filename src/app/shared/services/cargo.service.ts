@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { DataCargo, Cargo } from '@app/shared/interfaces/cargo';
+import { DataCargo, Cargo } from '@app/shared/models/cargo';
 import { environment } from '@env/environment';
 
 @Injectable({
