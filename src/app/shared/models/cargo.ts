@@ -1,5 +1,5 @@
 export interface Cargo {
-  id: number;
+  id?: number;
   nome: string;
   inativo: boolean;
   created_at: string;

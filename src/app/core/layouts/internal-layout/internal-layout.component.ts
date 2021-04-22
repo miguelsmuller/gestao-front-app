@@ -15,14 +15,14 @@ export class InternalLayoutComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
-    this.authenticated$ = this.authService.isAuthenticated();
+    // this.authenticated$ = this.authService.isAuthenticated();
   }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this.authService.logout();
+    // this.authService.logout();
     this.router.navigateByUrl('/login');
   }
 

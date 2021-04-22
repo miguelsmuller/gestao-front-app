@@ -1,4 +1,4 @@
-import { AuthActions, AuthActionTypes } from '@app/store/actions/auth.action';
+import { AuthActions, AuthActionTypes } from '@app/core/store/actions/auth.action';
 import { Usuario } from '@app/shared/models/usuario';
 
 export interface AuthState {
@@ -12,13 +12,16 @@ const initialState: AuthState = {
 export function authReducer(state = initialState, action: AuthActions) {
   switch (action.type) {
     case AuthActionTypes.LOGIN_USER:
-      return state;
+      return { ...state, credentials: action.payload };
 
     case AuthActionTypes.REGISTER_USER:
-      return state;
+      return { ...state, user: action.payload };
+
+    case AuthActionTypes.SET_INITIAL_USER:
+      return { ...state };
 
     case AuthActionTypes.SET_CURRENT_USER:
-      return { ...state, user: action.payload };
+        return { ...state, user: action.payload };
 
     default:
       return state;

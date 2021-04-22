@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, mergeMap } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Usuario } from '@app/shared/models/usuario';
@@ -12,18 +12,15 @@ import { Usuario } from '@app/shared/models/usuario';
 export class AuthService {
   readonly url = environment.api_url;
 
-  private subjLogado$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  private subjUsuario$: BehaviorSubject<Usuario> = new BehaviorSubject(null);
-
   constructor(
     private http: HttpClient,
   ) {}
 
-  getToken() {
+  get token(): string {
     return localStorage.getItem('token');
   }
 
-  setToken(val: string) {
+  set token(val: string) {
     if (val) {
       localStorage.setItem('token', val);
     } else {
@@ -31,30 +28,29 @@ export class AuthService {
     }
   }
 
-  login(crendetials: {username: string, password: string}): Observable<any> {
+  login(crendetials: {username: string, password: string}): Observable<string> {
     return this.http.post<any>(`${this.url}/login`, crendetials)
     .pipe(
-      tap(
-        (response) => {
-          this.setToken(response.access_token);
-          this.subjLogado$.next(true);
-        }
-      ),
-      catchError((erro) => {
-
-        return throwError(erro);
+      mergeMap((response) => {
+        this.token = response.access_token;
+        return of(response.access_token);
+      }),
+      catchError((err) => {
+        return throwError(err);
       })
     );
   }
 
-  logout() {
-    this.setToken(null);
-    this.subjLogado$.next(false);
-    this.subjUsuario$.next(null);
+  whoami(): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.url}/info`);
+  }
+
+  /* logout() {
+    this.token(null);
   }
 
   isAuthenticated(): Observable<boolean> {
-    const token = this.getToken();
+    const token = this.token();
     if (token && !this.subjLogado$.value) {
       return this.checkTokenValidation();
     }
@@ -80,5 +76,5 @@ export class AuthService {
         return of(false);
       })
     );
-  }
+  } */
 }

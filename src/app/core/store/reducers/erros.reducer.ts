@@ -1,4 +1,4 @@
-import { ErrorActions, ErrorActionTypes } from '@app/store/actions/errors.action';
+import { ErrorActions, ErrorActionTypes } from '@app/core/store/actions/errors.action';
 
 export interface ErrorState {
   error: any;
@@ -11,10 +11,10 @@ const initialState: ErrorState = {
 export function errorReducer(state = initialState, action: ErrorActions) {
   switch (action.type) {
     case ErrorActionTypes.ADD_ERROR:
-      return state;
+      return { ...state, error: action.payload };
 
     case ErrorActionTypes.REMOVE_ERROR:
-      return state;
+      return { ...state, error: null };
 
     default:
       return state;

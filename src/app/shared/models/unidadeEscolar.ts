@@ -1,5 +1,5 @@
 export interface UnidadeEscolar {
-  id: string;
+  id?: string;
   inep: number;
   nome_completo: string;
   nome_abreviado: string;

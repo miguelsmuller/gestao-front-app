@@ -1,5 +1,5 @@
 export interface Pessoa {
-  id: string;
+  id?: string;
   nome_completo: string;
   data_nascimento: string;
   cpf: string;

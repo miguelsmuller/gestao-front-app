@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuardService } from './core/guards/auth-guard.service';
-
 import { InternalLayoutComponent } from './core/layouts/internal-layout/internal-layout.component';
-import { ExternalLayoutComponent } from './core/layouts/external-layout/external-layout.component';
-import { LoginComponent } from './core/components/login/login.component';
 
 const routes: Routes = [
   {
